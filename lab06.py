@@ -48,13 +48,16 @@ def ensureSortedAscending(apartmentList):
 def getBestApartment(apartmentList):
     if mergesort(apartmentList) != False:
         for i in apartmentList:
-            
-    else:
-        return False
+            pass
             
             
 def getWorstApartment(apartmentList):
-    pass
+    if mergesort(apartmentList) != False:
+        for i, g in enumerate(apartmentList):
+            if i > 1:
+                l = g.getApartmentDetails()
+                print(l[:])
+                    
 
 
 def getAffordableApartments(apartmentList):
