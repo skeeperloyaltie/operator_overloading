@@ -59,11 +59,13 @@ def getWorstApartment(apartmentList):
 def getAffordableApartments(apartmentList, r):
     if mergesort(apartmentList) != False:
         for i, d in enumerate(apartmentList):
-            if d.getRent() > r:
-                return d[i].getApartmentDetails()
-            else:
-                return d.getApartmentDetails()
-        
+            if d.getRent() < r:
+                i += 1
+                f = [apartmentList[i].getApartmentDetails(), apartmentList[0].getApartmentDetails()]
+                for i, t in enumerate(f):
+                    print(t)
+            
+
         
 
 
