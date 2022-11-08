@@ -47,21 +47,25 @@ def ensureSortedAscending(apartmentList):
 
 def getBestApartment(apartmentList):
     if mergesort(apartmentList) != False:
-        for i in apartmentList:
-            pass
+        return apartmentList[0].getApartmentDetails()
             
             
 def getWorstApartment(apartmentList):
     if mergesort(apartmentList) != False:
-        for i, g in enumerate(apartmentList):
-            if i > 1:
-                l = g.getApartmentDetails()
-                print(l[:])
+        return apartmentList[-1].getApartmentDetails()
                     
 
 
-def getAffordableApartments(apartmentList):
-    pass
+def getAffordableApartments(apartmentList, r):
+    if mergesort(apartmentList) != False:
+        for i, d in enumerate(apartmentList):
+            if d.getRent() > r:
+                return d[i].getApartmentDetails()
+            else:
+                return d.getApartmentDetails()
+        
+        
+
 
 
 a0=Apartment(1115, 215, "bad")
@@ -78,7 +82,7 @@ for apartment in apartmentList:
     print(apartment.getApartmentDetails())
 
 assert ensureSortedAscending(apartmentList) == True
-
+print('\n')
 mergesort(apartmentList)
 assert ensureSortedAscending(apartmentList) == True
 print('apartmentList is SORTED:')
@@ -95,7 +99,7 @@ a4 = Apartment(700, 315, "bad")
 a5 = Apartment(800, 250, "excellent")
 apartmentList = [a0, a1, a2, a3, a4, a5]
 assert ensureSortedAscending(apartmentList) == True
-
+print('\n')
 print('Best Apartment in apartmentList:')
 print(getBestApartment(apartmentList))
 print('Worst Apartment in apartmentList:')
@@ -109,6 +113,6 @@ a3 = Apartment(950, 190, "excellent")
 a4 = Apartment(900, 190, "excellent")
 a5 = Apartment(500, 250, "bad")
 apartmentList = [a0, a1, a2, a3, a4, a5]
-
+print('\n')
 print('All apartments whose rent is <= in SORTED order:')
 print(getAffordableApartments(apartmentList, 950))
