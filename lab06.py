@@ -1,9 +1,6 @@
 
 from Apartment import *
 
-
-
-
 def mergeSort(apartmentList):
     if len(apartmentList) > 1:
         mid = len(apartmentList) // 2
@@ -22,7 +19,7 @@ def mergeSort(apartmentList):
         k = 0
         
         while i < len(left) and j < len(right):
-            if left[i].getRent() <= right[j].getRent():
+            if left[i] < right[j]:
               # The value from the left half has been used
               apartmentList[k] = left[i]
               # Move the iterator forward
