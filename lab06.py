@@ -47,10 +47,13 @@ def mergeSort(apartmentList):
 
 
 def ensureSortedAscending(apartmentList):
-    if mergeSort(apartmentList) != False:
-        return True
-    else:
-        return  False
+    prev = apartmentList[0]
+    for cur in apartmentList:
+        if cur.getRent() < prev.getRent():
+            return False
+        prev = cur
+    return True
+
    
 
 def getBestApartment(apartmentList):
