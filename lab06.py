@@ -90,7 +90,7 @@ print('apartmentList is NOT SORTED:')
 for apartment in apartmentList:
     print(apartment.getApartmentDetails())
 
-assert ensureSortedAscending(apartmentList) == True
+assert ensureSortedAscending(apartmentList) == False
 print('\n')
 mergeSort(apartmentList)
 assert ensureSortedAscending(apartmentList) == True
@@ -107,7 +107,7 @@ a3 = Apartment(1000, 215, "excellent")
 a4 = Apartment(700, 315, "bad")
 a5 = Apartment(800, 250, "excellent")
 apartmentList = [a0, a1, a2, a3, a4, a5]
-assert ensureSortedAscending(apartmentList) == True
+assert ensureSortedAscending(apartmentList) == False
 print('\n')
 print('Best Apartment in apartmentList:')
 print(getBestApartment(apartmentList))
