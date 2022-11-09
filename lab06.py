@@ -2,81 +2,64 @@
 from Apartment import *
 
 
-def merge(arr, l, m, r):
-    n1 = m - l + 1
-    n2 = r - m
 
-    # create temp arrays
-    L = [0] * (n1)
-    R = [0] * (n2)
 
-    # Copy data to temp arrays L[] and R[]
-    for i in range(0, n1):
-        L[i] = arr[l + i]
+def mergeSort(apartmentList):
+    if len(apartmentList) > 1:
+        mid = len(apartmentList) // 2
+        left = apartmentList[:mid]
+        right = apartmentList[mid:]
 
-    for j in range(0, n2):
-        R[j] = arr[m + 1 + j]
+        # Recursive call on each half
+        mergeSort(left)
+        mergeSort(right)
 
-    # Merge the temp arrays back into arr[l..r]
-    i = 0    # Initial index of first subarray
-    j = 0    # Initial index of second subarray
-    k = l    # Initial index of merged subarray
+        # Two iterators for traversing the two halves
+        i = 0
+        j = 0
+        
+        # Iterator for the main list
+        k = 0
+        
+        while i < len(left) and j < len(right):
+            if left[i].getRent() <= right[j].getRent():
+              # The value from the left half has been used
+              apartmentList[k] = left[i]
+              # Move the iterator forward
+              i += 1
+            else:
+                apartmentList[k] = right[j]
+                j += 1
+            # Move to the next slot
+            k += 1
 
-    while i < n1 and j < n2:
-        if L[i].getRent() <= R[j].getRent():
-            arr[k] = L[i]
+        # For all the remaining values
+        while i < len(left):
+            apartmentList[k] = left[i]
             i += 1
-        else:
-            arr[k] = R[j]
+            k += 1
+
+        while j < len(right):
+            apartmentList[k]=right[j]
             j += 1
-        k += 1
-
-    # Copy the remaining elements of L[], if there
-    # are any
-    while i < n1:
-        arr[k] = L[i]
-        i += 1
-        k += 1
-
-    # Copy the remaining elements of R[], if there
-    # are any
-    while j < n2:
-        arr[k] = R[j]
-        j += 1
-        k += 1
-
-# l is for left index and r is right index of the
-# sub-array of arr to be sorted
-
-
-def mergesort(arr, l, r):
-    if l < r:
-
-        # Same as (l+r)//2, but avoids overflow for
-        # large l and h
-        m = l+(r-l)//2
-
-        # Sort first and second halves
-        mergesort(arr, l, m)
-        mergesort(arr, m+1, r)
-        merge(arr, l, m, r)
+            k += 1
 
 
 
 def ensureSortedAscending(apartmentList):
-    if mergesort(apartmentList,0,len(apartmentList)-1) != False:
+    if mergeSort(apartmentList) != False:
         return True
     else:
         return  False
    
 
 def getBestApartment(apartmentList):
-    if mergesort(apartmentList,0,len(apartmentList)-1) != False:
+    if mergeSort(apartmentList) != False:
         return apartmentList[0].getApartmentDetails()
             
             
 def getWorstApartment(apartmentList):
-    if mergesort(apartmentList,0,len(apartmentList)-1) != False:
+    if mergeSort(apartmentList) != False:
         return apartmentList[-1].getApartmentDetails()
                     
 
@@ -86,7 +69,7 @@ def getAffordableApartments(apartmentList, r):
     for i, d in enumerate(apartmentList):
         if d.getRent() <= r:
             u.append(d)
-    mergesort(u, 0, len(u)-1)
+    mergeSort(u)
     return "\n".join([ x.getApartmentDetails() for x in u])
                
 
@@ -106,7 +89,7 @@ for apartment in apartmentList:
 
 assert ensureSortedAscending(apartmentList) == True
 print('\n')
-mergesort(apartmentList,0,len(apartmentList)-1)
+mergeSort(apartmentList)
 assert ensureSortedAscending(apartmentList) == True
 print('apartmentList is SORTED:')
 
