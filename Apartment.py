@@ -16,7 +16,7 @@ class Apartment:
         return str('(Apartment): Rent: ${}, Distance from UCSB: {}m, condition: {}'.format(self.rent, self.metersfromUCSB, self.condition))
     
     def __lt__(self, rhs):
-        if self.rent < rhs.rent:
+        if self.rent <= rhs.rent:
             return True
      
         else:
@@ -31,7 +31,7 @@ class Apartment:
                     return False
 
     def __gt__(self, rhs):
-        if self.rent > rhs.rent:
+        if self.rent <= rhs.rent:
             return True
  
         else:

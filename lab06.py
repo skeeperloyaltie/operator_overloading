@@ -9,23 +9,24 @@ def mergesort(apartmentList):
             mid = len(apartmentList) // 2
             lefthalf = apartmentList[:mid]
             righthalf = apartmentList[mid:]
-
             mergesort(lefthalf)
             mergesort(righthalf)
-
             i = 0
             j = 0
             k = 0
 
             while i < len(lefthalf) and j < len(righthalf):
-                if lefthalf[i] < righthalf[j]:
+                
+                if lefthalf[i].getRent() < righthalf[j].getRent():
                     apartmentList[k] = lefthalf[i]
                     i = i + 1
                 else:
                     apartmentList[k] = righthalf[j]
                     j = j + 1
                 k = k + 1
-
+                
+                
+            
             while i < len(lefthalf):
                 apartmentList[k] = lefthalf[i]
                 i = i + 1
@@ -57,17 +58,13 @@ def getWorstApartment(apartmentList):
 
 
 def getAffordableApartments(apartmentList, r):
-    if mergesort(apartmentList) != False:
-        for i, d in enumerate(apartmentList):
-            if d.getRent() < r:
-                i += 1
-                f = [apartmentList[i].getApartmentDetails(), apartmentList[0].getApartmentDetails()]
-                for i, t in enumerate(f):
-                    print(t)
-            
-
-        
-
+    u = []
+    for i, d in enumerate(apartmentList):
+        if d.getRent() <= r:
+            u.append(d.getApartmentDetails())
+    mergesort(u)
+    return "\n".join(u)
+               
 
 
 a0=Apartment(1115, 215, "bad")
