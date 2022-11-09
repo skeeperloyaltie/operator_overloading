@@ -18,7 +18,7 @@ class Apartment:
     def __lt__(self, rhs):
         if self.rent <= rhs.rent:
             return True
-     
+
         else:
             return False
 
@@ -30,9 +30,3 @@ class Apartment:
                 else:
                     return False
 
-    def __gt__(self, rhs):
-        if self.rent <= rhs.rent:
-            return True
- 
-        else:
-            return False
