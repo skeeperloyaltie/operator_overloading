@@ -22,7 +22,7 @@ class Apartment:
         return False
 
     def __eq__(self, rhs):
-        if self.rent != rhs.rent:
+        if self.rent > rhs.rent:
             if self.metersFromUCSB == rhs.metersFromUCSB:
                 if self.condition == rhs.condition:
                     return True
@@ -30,7 +30,23 @@ class Apartment:
             return False
         return True
 
+    # def __gt__(self, rhs):
+    #     if self.rent > rhs.rent:
+    #         return True
+    #     return False
+    
     def __gt__(self, rhs):
         if self.rent > rhs.rent:
             return True
-        return False
+        elif self.rent == rhs.rent:
+            if self.metersFromUCSB > rhs.metersFromUCSB:
+                return True
+            elif (self.metersFromUCSB == rhs.metersFromUCSB):
+                if (self.condition == "bad" or self.condition == "average" and rhs.condition == "excellent"):
+                    return True
+            elif (self.condition == "bad" or rhs.condition == "average"):
+                    return True
+            else:
+                return False
+        else:
+            return False
