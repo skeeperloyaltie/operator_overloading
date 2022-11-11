@@ -20,8 +20,8 @@ You will also implement the method
     - getApartmentDetails(self)
         - that returns a str with all of the Apartment attributes. The string should contain all attributes in the following EXACT format (Note: There is no \n character at the end of this string):
 
-        ``` a0 = Apartment(1204, 200, "bad")```
-        ``` print(a0.getApartmentDetails())```
+        ``` a0 = Apartment(1204, 200, "bad")```<br>
+        ``` print(a0.getApartmentDetails())```<br>
         Output
             ``` (Apartment) Rent: $1204, Distance From UCSB: 200m, Condition: bad```
 
