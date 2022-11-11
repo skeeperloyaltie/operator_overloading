@@ -22,7 +22,7 @@ You will also implement the method
 
         ``` a0 = Apartment(1204, 200, "bad")```<br>
         ``` print(a0.getApartmentDetails())```<br>
-        Output
+        Output<br>
             ``` (Apartment) Rent: $1204, Distance From UCSB: 200m, Condition: bad```
 
 #### lab06.py
